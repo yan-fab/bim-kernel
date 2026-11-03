@@ -143,14 +143,14 @@ static GS::UniString GetAttributeNameByIndex (API_AttrTypeID typeID, API_Attribu
 }
 
 // =============================================================================
-// Superquadra Base Command
+// BimKernel Base Command
 // =============================================================================
 
-class SuperquadraBaseCommand : public API_AddOnCommand {
+class BimKernelBaseCommand : public API_AddOnCommand {
 public:
 	virtual GS::String GetNamespace () const override
 	{
-		return "Superquadra";
+		return "BimKernel";
 	}
 
 	virtual GS::Optional<GS::UniString> GetSchemaDefinitions () const override
@@ -187,7 +187,7 @@ public:
 // 1. Ping Command
 // =============================================================================
 
-class PingCommand : public SuperquadraBaseCommand {
+class PingCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -198,7 +198,7 @@ public:
 	{
 		GS::ObjectState res;
 		res.Add ("status", "ok");
-		res.Add ("addOn", "SuperquadraAutomation");
+		res.Add ("addOn", "BimKernel");
 		res.Add ("version", "3.0.0");
 		res.Add ("accessLevel", 5);
 
@@ -207,7 +207,7 @@ public:
 		res.Add ("archicadMainVersion", (Int32) appInfo.mainVersion);
 		res.Add ("archicadReleaseVersion", (Int32) appInfo.releaseVersion);
 		res.Add ("archicadBuildNum", (Int32) appInfo.buildNum);
-		res.Add ("message", "Superquadra Native C++ Kernel v3.0.0 connected.");
+		res.Add ("message", "BimKernel Native C++ Kernel v3.0.0 connected.");
 
 		GS::Array<GS::UniString> commands;
 		commands.Push ("Ping");
@@ -242,7 +242,7 @@ public:
 // 2. ChangeElementsLayer Command
 // =============================================================================
 
-class ChangeElementsLayerCommand : public SuperquadraBaseCommand {
+class ChangeElementsLayerCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -313,7 +313,7 @@ public:
 // 3. ManageHotlinks Command (list, break, delete, import)
 // =============================================================================
 
-class ManageHotlinksCommand : public SuperquadraBaseCommand {
+class ManageHotlinksCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -409,7 +409,7 @@ public:
 				return res;
 			}
 
-			GS::UniString nodeName = "SuperquadraHotlink";
+			GS::UniString nodeName = "BimKernelHotlink";
 			parameters.Get ("name", nodeName);
 			GS::UniString layerName;
 			parameters.Get ("layerName", layerName);
@@ -497,7 +497,7 @@ public:
 // 4. DeleteElements Command
 // =============================================================================
 
-class DeleteElementsCommand : public SuperquadraBaseCommand {
+class DeleteElementsCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -536,7 +536,7 @@ public:
 // 5. ListLayers Command
 // =============================================================================
 
-class ListLayersCommand : public SuperquadraBaseCommand {
+class ListLayersCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -582,7 +582,7 @@ public:
 // 6. ModifyLayersState Command (lock/unlock, show/hide, delete layers)
 // =============================================================================
 
-class ModifyLayersStateCommand : public SuperquadraBaseCommand {
+class ModifyLayersStateCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -655,7 +655,7 @@ public:
 // 7. PublishSet Command
 // =============================================================================
 
-class PublishSetCommand : public SuperquadraBaseCommand {
+class PublishSetCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -726,7 +726,7 @@ public:
 // 8. ListLayoutDatabases Command
 // =============================================================================
 
-class ListLayoutDatabasesCommand : public SuperquadraBaseCommand {
+class ListLayoutDatabasesCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -770,7 +770,7 @@ public:
 // 9. PlaceDrawingOnLayout Command (single & batch layout sheet automation)
 // =============================================================================
 
-class PlaceDrawingOnLayoutCommand : public SuperquadraBaseCommand {
+class PlaceDrawingOnLayoutCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -880,7 +880,7 @@ public:
 // 10. SetFloorPlanCutPlane Command
 // =============================================================================
 
-class SetFloorPlanCutPlaneCommand : public SuperquadraBaseCommand {
+class SetFloorPlanCutPlaneCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -919,7 +919,7 @@ public:
 // 11. SolidElementOperations Command (SEO Boolean Link / Unlink)
 // =============================================================================
 
-class SolidElementOperationsCommand : public SuperquadraBaseCommand {
+class SolidElementOperationsCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -991,7 +991,7 @@ public:
 // 12. ModifyElementsGeometry Command (Transform / Edit / Set Coordinates & ID)
 // =============================================================================
 
-class ModifyElementsGeometryCommand : public SuperquadraBaseCommand {
+class ModifyElementsGeometryCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -1429,7 +1429,7 @@ static bool PopulatePolygonInMemo (const GS::Array<GS::ObjectState>& polyNodes, 
 	return true;
 }
 
-class CreateNativeElementsCommand : public SuperquadraBaseCommand {
+class CreateNativeElementsCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -1694,7 +1694,7 @@ public:
 // 14. GetSetGDLParameters Command (Inspect & Modify GDL AddPars & Scripts)
 // =============================================================================
 
-class GetSetGDLParametersCommand : public SuperquadraBaseCommand {
+class GetSetGDLParametersCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -1864,7 +1864,7 @@ public:
 // 15. DatabaseAndViewControl Command (rebuild, redraw, save, saveAs)
 // =============================================================================
 
-class DatabaseAndViewControlCommand : public SuperquadraBaseCommand {
+class DatabaseAndViewControlCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -1916,7 +1916,7 @@ public:
 // 16. ModifyBuildingMaterials Command (list, modify, create)
 // =============================================================================
 
-class ModifyBuildingMaterialsCommand : public SuperquadraBaseCommand {
+class ModifyBuildingMaterialsCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -2070,7 +2070,7 @@ public:
 // 17. ManageComposites Command (list, create, modify API_CompWallID skins)
 // =============================================================================
 
-class ManageCompositesCommand : public SuperquadraBaseCommand {
+class ManageCompositesCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -2228,7 +2228,7 @@ public:
 // 18. ManageSurfaces Command (list, create, modify API_MaterialID 3D surfaces)
 // =============================================================================
 
-class ManageSurfacesCommand : public SuperquadraBaseCommand {
+class ManageSurfacesCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -2354,7 +2354,7 @@ public:
 // 19. ManageStories Command (list, setHeight, setElevation, rename, insAbove, insBelow, delete, goTo)
 // =============================================================================
 
-class ManageStoriesCommand : public SuperquadraBaseCommand {
+class ManageStoriesCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -2485,7 +2485,7 @@ static GS::UniString ElemTypeToString (const API_ElemType& type)
 	}
 }
 
-class InspectElementsCommand : public SuperquadraBaseCommand {
+class InspectElementsCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -2683,7 +2683,7 @@ static void CollectNavItemsRecursive (API_NavigatorMapID mapId, const API_Guid& 
 	}
 }
 
-class ManageNavigatorViewsCommand : public SuperquadraBaseCommand {
+class ManageNavigatorViewsCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -2787,7 +2787,7 @@ public:
 // 22. DirectExport Command (Direct export to IFC, PDF, PLN, PLA, PNG, JPEG)
 // =============================================================================
 
-class DirectExportCommand : public SuperquadraBaseCommand {
+class DirectExportCommand : public BimKernelBaseCommand {
 public:
 	virtual GS::String GetName () const override
 	{
@@ -2881,7 +2881,7 @@ public:
 		cancelButton (GetReference (), CancelButtonId),
 		separator (GetReference (), SeparatorId)
 	{
-		SetTitle ("Superquadra Automation Kernel v3.0.0");
+		SetTitle ("BimKernel v3.0.0");
 		AttachToAllItems (*this);
 		Attach (*this);
 	}
@@ -2954,7 +2954,7 @@ GSErrCode Initialize (void)
 {
 	ACAPI_MenuItem_InstallMenuHandler (AddOnMenuID, MenuCommandHandler);
 
-	// Register Superquadra Automation Kernel v3.0.0 commands (22 commands)
+	// Register BimKernel v3.0.0 commands (22 commands)
 	ACAPI_AddOnAddOnCommunication_InstallAddOnCommandHandler (GS::NewOwned<PingCommand> ());
 	ACAPI_AddOnAddOnCommunication_InstallAddOnCommandHandler (GS::NewOwned<ChangeElementsLayerCommand> ());
 	ACAPI_AddOnAddOnCommunication_InstallAddOnCommandHandler (GS::NewOwned<ManageHotlinksCommand> ());

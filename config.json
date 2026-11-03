@@ -1,13 +1,13 @@
 {
-    "addOnName": "SuperquadraAutomation",
+    "addOnName": "BimKernel",
     "defaultLanguage": "INT",
     "languages": [
         "INT"
     ],
     "version": "3.0.0",
     "copyright": {
-        "name": "Superquadra",
+        "name": "BimKernel",
         "year": "2026"
     },
-    "description": "Superquadra Kernel Automation Add-On v3.0.0 for Archicad 30 & 29"
+    "description": "BimKernel Automation Add-On v3.0.0 for Archicad 30 & 29"
 }

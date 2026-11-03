@@ -1,15 +1,15 @@
 """
-Superquadra Native Archicad 30 / 29 C++ Kernel SDK (v3.0.0)
-===========================================================
-Python wrapper for the `SuperquadraAutomation.apx` native C++ Add-On.
-Exposes 22 kernel-level commands under the `"Superquadra"` namespace via
+BimKernel Native Archicad 30 / 29 C++ Kernel SDK (v3.0.0)
+=========================================================
+Python wrapper for the `BimKernel.apx` native C++ Add-On.
+Exposes 22 kernel-level commands under the `"BimKernel"` namespace via
 `ACAPI_AddOnAddOnCommunication_InstallAddOnCommandHandler`.
 """
 
 from typing import Any, Dict, List, Optional, Union
 from archicad import ACConnection
 
-NAMESPACE = "Superquadra"
+NAMESPACE = "BimKernel"
 SDK_VERSION = "3.0.0"
 
 
@@ -36,7 +36,7 @@ def _exec(
 # =============================================================================
 
 def ping(conn: Optional[ACConnection] = None) -> Dict[str, Any]:
-    """Verify connection to the Superquadra C++ Kernel v3.0.0 and list registered commands."""
+    """Verify connection to the BimKernel C++ Kernel v3.0.0 and list registered commands."""
     return _exec("Ping", {}, conn)
 
 
@@ -90,7 +90,7 @@ def list_hotlinks(conn: Optional[ACConnection] = None) -> Dict[str, Any]:
 
 def import_hotlink_module(
     file_path: str,
-    name: str = "SuperquadraHotlink",
+    name: str = "BimKernelHotlink",
     layer_name: str = "",
     x: float = 0.0,
     y: float = 0.0,
@@ -342,7 +342,7 @@ def list_surfaces(conn: Optional[ACConnection] = None) -> Dict[str, Any]:
 
 
 def modify_surfaces(
-    surfaces: List[Dict[str, Any]], conn: Optional[ACConnection] = None
+    surfaces: List[Dict[str, Any]], conn: Optional[ACConnection] = None,
 ) -> Dict[str, Any]:
     """
     Create or modify 3D Surface Materials (`API_MaterialID`).
@@ -531,5 +531,5 @@ def database_and_view_control(
 
 
 if __name__ == "__main__":
-    print(f"Testing Superquadra Kernel SDK v{SDK_VERSION}...")
+    print(f"Testing BimKernel SDK v{SDK_VERSION}...")
     print(ping())

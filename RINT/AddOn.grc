@@ -1,12 +1,12 @@
 #include "ResourceIds.hpp"
 
 'STR#' ID_ADDON_INFO "Add-on Name and Description" {
-/* [  1] */		"Superquadra Automation"
-/* [  2] */		"Kernel Automation Add-On for Archicad"
+/* [  1] */		"BimKernel"
+/* [  2] */		"BimKernel Native C++ Automation Add-On for Archicad 30 & 29"
 }
 
 'STR#' ID_ADDON_MENU "Strings for the Menu" {
-/* [  1] */		"Superquadra Automation... ^E3 ^ES ^EE ^EI ^ED ^ET ^10001"
+/* [  1] */		"BimKernel... ^E3 ^ES ^EE ^EI ^ED ^ET ^10001"
 }
 
 'GDLG' ID_ADDON_DLG Modal | grow   40   40  345  128  "" {

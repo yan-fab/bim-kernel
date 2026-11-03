@@ -1,18 +1,19 @@
-# Superquadra Archicad Kernel (`SuperquadraAutomation.apx`) — v3.0.0
+# BimKernel (`BimKernel.apx`) — v3.0.0
 
 [![Archicad 30 & 29](https://img.shields.io/badge/Archicad-30%20%7C%2029-0066CC?style=for-the-badge&logo=archicad)](https://graphisoft.com/downloads/archicad)
 [![C++20](https://img.shields.io/badge/C%2B%2B-20%20%7C%20ACAPI%20DevKit%2030.3000-00599C?style=for-the-badge&logo=cplusplus)](https://archicadapi.graphisoft.com/)
-[![Python SDK](https://img.shields.io/badge/Python%20SDK-3.9%2B-3776AB?style=for-the-badge&logo=python)](./python/superquadra_kernel.py)
-[![Release v3.0.0](https://img.shields.io/badge/Release-v3.0.0-2EA44F?style=for-the-badge)](https://github.com/yan-fab/superquadra-archicad-kernel/releases/tag/v3.0.0)
+[![Python SDK](https://img.shields.io/badge/Python%20SDK-3.9%2B-3776AB?style=for-the-badge&logo=python)](./python/bim_kernel.py)
+[![Release v3.0.0](https://img.shields.io/badge/Release-v3.0.0-2EA44F?style=for-the-badge)](https://github.com/yan-fab/bim-kernel/releases/tag/v3.0.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](./LICENSE.md)
 
-**Superquadra Archicad Kernel** (`SuperquadraAutomation.apx`) is a native C++20 Kernel Extension (Add-On) and Python SDK for **Graphisoft Archicad 30 & 29**. It bypasses the limitations of Archicad's built-in Python JSON API by exposing **22 native C++ ACAPI kernel commands** directly under the `"Superquadra"` namespace via `ACAPI_AddOnAddOnCommunication_InstallAddOnCommandHandler`.
+**BimKernel** (`BimKernel.apx`) is a native C++20 Kernel Extension (Add-On) and Python SDK for **Graphisoft Archicad 30 & 29**. It bypasses the limitations of Archicad's built-in Python JSON API by exposing **22 native C++ ACAPI kernel commands** directly under the `"BimKernel"` namespace via `ACAPI_AddOnAddOnCommunication_InstallAddOnCommandHandler`.
 
 ---
 
 ## What's New in v3.0.0
 
-- **Native Archicad 30 Support (`APIDevKit 30.3000`):** Compiled natively for **Archicad 30** (`SuperquadraAutomation_AC30.apx`) alongside **Archicad 29** (`SuperquadraAutomation_AC29.apx`), with automatic version detection in `instalar_extensao.bat`.
+- **Renamed to `BimKernel` (`BimKernel.apx`):** Clean, universal C++ Add-On identity and `"BimKernel"` JSON-RPC namespace (`bim_kernel.py`).
+- **Native Archicad 30 Support (`APIDevKit 30.3000`):** Compiled natively for **Archicad 30** (`BimKernel_AC30.apx` / `BimKernel.apx`) alongside **Archicad 29** (`BimKernel_AC29.apx`), with automatic version detection in `instalar_extensao.bat`.
 - **Expanded from 15 to 22 C++ Kernel Commands (+7 New Subsystems):**
   1. `ModifyBuildingMaterials` — List, create, and modify `API_BuildingMaterialID` attributes (`connPriority`, `cutFill`, `cutFillPen`, `cutFillBackgroundPen`, `cutMaterial`).
   2. `ManageComposites` — List, create, and modify multi-skin `API_CompWallID` Composite structures (`API_CWallComponent` skins, thicknesses, core/finish flags, frame pens).
@@ -31,16 +32,16 @@
 
 ```mermaid
 flowchart LR
-    Py["Python Automation / AI Agent<br/>(superquadra_kernel.py v3.0.0)"] -->|"JSON-RPC over HTTP<br/>Namespace: Superquadra"| Bridge["Archicad 30 / 29<br/>AddOnCommand Dispatcher"]
-    Bridge -->|"Main Thread Execution<br/>ACAPI_CallUndoableCommand"| Kernel["SuperquadraAutomation.apx<br/>(Native C++20 Kernel v3.0.0)"]
+    Py["Python Automation / AI Agent<br/>(bim_kernel.py v3.0.0)"] -->|"JSON-RPC over HTTP<br/>Namespace: BimKernel"| Bridge["Archicad 30 / 29<br/>AddOnCommand Dispatcher"]
+    Bridge -->|"Main Thread Execution<br/>ACAPI_CallUndoableCommand"| Kernel["BimKernel.apx<br/>(Native C++20 Kernel v3.0.0)"]
     Kernel --> DB["Archicad 30 / 29 BIM Database<br/>• 22 Native C++ Commands<br/>• Wall / Slab / Mesh / Zone / Door / Window<br/>• Building Materials, Composites & 3D Surfaces<br/>• Live GDL 3D/2D Script & Memo Injection<br/>• Stories, Navigator Views, Layouts & Direct Export"]
 ```
 
 ---
 
-## Kernel v3.0.0 Capabilities (22 Registered C++ Commands)
+## BimKernel v3.0.0 Capabilities (22 Registered C++ Commands)
 
-| # | Kernel Command (`Superquadra.*`) | C++ ACAPI Kernel Primitives | Description |
+| # | Kernel Command (`BimKernel.*`) | C++ ACAPI Kernel Primitives | Description |
 | :-: | :--- | :--- | :--- |
 | **1** | `Ping` | `ACAPI_AddOnIdentification_Application` | Returns kernel health, version (`3.0.0`), Archicad build info, access level (`5`), and all 22 registered commands. |
 | **2** | `ChangeElementsLayer` | `ACAPI_Attribute_Create`, `ACAPI_Element_Change` | Moves elements to a target layer (automatically creates the layer if missing). |
@@ -70,9 +71,9 @@ flowchart LR
 ## Quick Start & Installation
 
 ### Option 1: Install Pre-Compiled Binary (Recommended)
-1. Download `SuperquadraAutomation_AC30.apx` (for **Archicad 30**), `SuperquadraAutomation_AC29.apx` (for **Archicad 29**), and `instalar_extensao.bat` from the [**Latest Release (v3.0.0)**](https://github.com/yan-fab/superquadra-archicad-kernel/releases/tag/v3.0.0).
+1. Download `BimKernel_AC30.apx` (for **Archicad 30**), `BimKernel_AC29.apx` (for **Archicad 29**), and `instalar_extensao.bat` from the [**Latest Release (v3.0.0)**](https://github.com/yan-fab/bim-kernel/releases/tag/v3.0.0).
 2. Run `instalar_extensao.bat` (automatically requests Administrator privileges and installs into `C:\Program Files\Graphisoft\Archicad 30\Add-Ons\Extras\` and/or `Archicad 29\Add-Ons\Extras\`).
-3. Restart **Archicad 30** (or load the `.apx` via **Options > Add-On Manager**).
+3. Restart **Archicad 30** (or load `BimKernel.apx` via **Options > Add-On Manager**).
 
 ### Option 2: Build from Source (Archicad 30 & 29)
 Requires **Visual Studio 2022 (MSVC v143, x64)**, **CMake 3.19+**, and **Python 3.10+**:
@@ -83,19 +84,19 @@ python Tools/BuildAddOn.py -c config.json -v 30 29 -b Release
 
 ---
 
-## Python SDK Usage Examples (`superquadra_kernel.py`)
+## Python SDK Usage Examples (`bim_kernel.py`)
 
 ```python
-import superquadra_kernel as sq
+import bim_kernel as bk
 
-# 1. Verify Kernel v3.0.0 connection & list all 22 commands
-print(sq.ping())
+# 1. Verify BimKernel v3.0.0 connection & list all 22 commands
+print(bk.ping())
 
 # 2. Fast batch inspection with 3D bounding boxes, stories, layers, and materials
-walls = sq.inspect_elements(types=["Wall", "Window", "Door"], floor_ind=0)
+walls = bk.inspect_elements(types=["Wall", "Window", "Door"], floor_ind=0)
 
 # 3. Create or modify Building Materials, 3D Surfaces, and multi-skin Composites
-sq.modify_building_materials([{
+bk.modify_building_materials([{
     "material": "Madeira - CLT Painel Estrutural",
     "connPriority": 820,
     "cutFill": "Plywood",
@@ -104,7 +105,7 @@ sq.modify_building_materials([{
     "createIfMissing": True
 }])
 
-sq.create_or_modify_composite(
+bk.create_or_modify_composite(
     name="PAREDE DRYWALL ACUSTICA 14CM",
     skins=[
         {"buildingMaterial": "Gesso Cartonado", "thickness": 0.025, "framePen": 1, "isFinish": True},
@@ -114,7 +115,7 @@ sq.create_or_modify_composite(
 )
 
 # 4. Create polygonal Slabs, Meshes, and Zones natively
-sq.create_native_elements([{
+bk.create_native_elements([{
     "type": "Slab",
     "floorInd": 0,
     "level": 0.0,
@@ -131,17 +132,17 @@ sq.create_native_elements([{
 }])
 
 # 5. Direct export to IFC / PDF / PLA
-sq.direct_export(r"C:\Exports\PROJETO_EXECUTIVO_LOD400.ifc", format="ifc")
+bk.direct_export(r"C:\Exports\PROJETO_EXECUTIVO_LOD400.ifc", format="ifc")
 ```
 
 ---
 
 ## Links & Resources
 
-- **Repository:** [https://github.com/yan-fab/superquadra-archicad-kernel](https://github.com/yan-fab/superquadra-archicad-kernel)
-- **Releases & Binary Assets (`.apx`):** [https://github.com/yan-fab/superquadra-archicad-kernel/releases](https://github.com/yan-fab/superquadra-archicad-kernel/releases)
+- **Repository:** [https://github.com/yan-fab/bim-kernel](https://github.com/yan-fab/bim-kernel)
+- **Releases & Binary Assets (`.apx`):** [https://github.com/yan-fab/bim-kernel/releases](https://github.com/yan-fab/bim-kernel/releases)
 - **Graphisoft Archicad API DevKit:** [https://archicadapi.graphisoft.com/](https://archicadapi.graphisoft.com/)
 
 ## License
 
-Released under the [MIT License](./LICENSE.md). Copyright (c) 2026 Superquadra / Yan.
+Released under the [MIT License](./LICENSE.md). Copyright (c) 2026 BimKernel / Yan.
